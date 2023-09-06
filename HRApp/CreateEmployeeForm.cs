@@ -49,7 +49,7 @@ namespace HRApp
 
         }
 
-        private void AgreeButton_Click(object sender, EventArgs e)
+        private async void AgreeButton_Click(object sender, EventArgs e)
         {
             PostGetDTO post = (PostGetDTO)comboBox1.SelectedItem;
              
@@ -61,8 +61,14 @@ namespace HRApp
                 Patronymic = textBox2.Text,
                 PostId = post.Id
             };
-            _employeeService.Create(dto);
-            
+             await _employeeService.Create(dto);
+
+            List<EmployeeGetDTO> employees = await _employeeService.GetByName("");
+            var form = (Form1)System.Windows.Forms.Application.OpenForms["Form1"];
+            var grid = (DataGridView)form.Controls.Find("dataGridView1", true)[0];
+            grid.DataSource = employees;
+            this.Close();
+
         }
 
         private void DiasgreeButton_Click(object sender, EventArgs e)

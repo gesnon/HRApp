@@ -75,7 +75,7 @@ namespace HRApp
                 Patronymic=textBox3.Text ,
                 PostId=post1.Id,
             } ;
-            _employeeService.Update(employeeCreateDTO, itemId);
+            await _employeeService.Update(employeeCreateDTO, itemId);
 
             string query;
 
