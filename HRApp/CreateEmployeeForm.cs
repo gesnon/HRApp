@@ -69,7 +69,9 @@ namespace HRApp
         {
             textBox1.Text = "";
             textBox2.Text = "";
-            textBox3.Text = "";            
+            textBox3.Text = "";
+
+            this.Close();
         }
 
         private void ExitButton_Click(object sender, EventArgs e)

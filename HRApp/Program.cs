@@ -22,6 +22,7 @@ namespace HRApp
              {
                  services.AddSingleton<Form1>();
                  services.AddSingleton<CreateEmployeeForm>();
+                 services.AddSingleton<UpdateEmployeeForm>();
                  services.AddSingleton<CreateNewPostForm>();
                  services.AddInfrastructure(hostContext.Configuration);
                  services.AddApplication(hostContext.Configuration);                

@@ -21,6 +21,8 @@ namespace HRApp.Application.Services
             _context = context;
 
         }
+
+        // Метод для создания работников, в данный момент в нем нет проверок на регистры, дубликатыв базе и тд.
         public async Task<int> Create(EmployeeCreateDTO dto)
         {
 
@@ -78,10 +80,11 @@ namespace HRApp.Application.Services
                 throw new Exception("Работник не найден");
             }
 
-
             return result;
         }
 
+
+        // поиск осуществляется без учета регистра, тут также не проверок на вилидность введенных данных
         public async Task<List<EmployeeGetDTO>> GetByName(string name)
         {
             var query = _context.Employees.AsQueryable();
@@ -109,13 +112,14 @@ namespace HRApp.Application.Services
             return result;
         }
 
+        
         public async Task Update(EmployeeCreateDTO dto, int id)
         {
             Employee emp = await _context.Employees.FirstOrDefaultAsync(_ => _.Id == id);
 
             if (string.IsNullOrEmpty(dto.FirstName) || string.IsNullOrEmpty(dto.LastName) || string.IsNullOrEmpty(dto.Patronymic))
             {
-                throw new Exception("Неоьходимо заполнить все поля");
+                throw new Exception("Необходимо заполнить все поля");
             }
 
             if (emp == null)

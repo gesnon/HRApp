@@ -20,6 +20,8 @@ namespace HRApp.Application.Services
             _context = context;
         }
 
+
+        // В методе нет проверки на валидность введенных данных, он сохранит любое название
         public async Task<int> Create(PostCreateDTO dto)
         {
             Post checkPost = _context.Posts.FirstOrDefault(_ => _.Name == dto.Name);

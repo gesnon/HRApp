@@ -23,6 +23,7 @@ namespace HRApp.Application.Services
             _postService = postService;
         }
 
+        // Это метод для заполнения тестовых данных
         public async Task FillData()
         {
             await _postService.Create(new PostCreateDTO { Name = "Охранник" });
@@ -71,6 +72,7 @@ namespace HRApp.Application.Services
             await _context.SaveChangesAsync(CancellationToken.None);
         }
     
+        //Этот метод очищает всю таблицу
         public async Task RemoveAllData()
         {            
             _context.Employees.RemoveRange(_context.Employees);

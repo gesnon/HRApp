@@ -9,18 +9,20 @@ namespace HRApp
         private readonly IPostService _postService;
         private readonly IDataService _dataService;
         private readonly CreateEmployeeForm _createEmployeeForm;
+        private readonly UpdateEmployeeForm _updateEmployeeForm;
         private readonly CreateNewPostForm _createNewPostForm;
         
 
         public Form1(IEmployeeService employeeService, IPostService postService,
-            IDataService dataService, CreateEmployeeForm createEmployeeForm, CreateNewPostForm createNewPostForm)
+            IDataService dataService, CreateEmployeeForm createEmployeeForm, UpdateEmployeeForm updateEmployeeForm, CreateNewPostForm createNewPostForm)
         {
             _employeeService = employeeService;
             _postService = postService;
             _dataService = dataService;
             _createEmployeeForm = createEmployeeForm;
+            _updateEmployeeForm = updateEmployeeForm;
             _createNewPostForm = createNewPostForm;
-
+            
 
             InitializeComponent();
         }
@@ -31,7 +33,15 @@ namespace HRApp
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            _createEmployeeForm.ShowDialog();
+            if (dataGridView1.SelectedRows.Count != 0)
+            {
+                DataGridViewRow row = dataGridView1.SelectedRows[0];
+                int id = (int)row.Cells["Id"].Value;
+
+                _updateEmployeeForm.ShowDialog();
+
+            }
+            
         }
 
         private async void button3_Click(object sender, EventArgs e)
