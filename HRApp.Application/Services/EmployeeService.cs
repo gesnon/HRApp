@@ -104,7 +104,7 @@ namespace HRApp.Application.Services
                 Patronymic = _.Patronymic,
                 DateModified = _.DateModified,
                 UserModified = _.UserModified,
-                Post=new PostGetDTO { Id = _.Post.Id}
+                Post=new PostGetDTO { Id = _.Post.Id, Name=_.Post.Name}
                 
 
             }).OrderBy(_ => _.LastName).ToListAsync();
@@ -136,5 +136,6 @@ namespace HRApp.Application.Services
 
             await _context.SaveChangesAsync(CancellationToken.None);
         }
+
     }
 }

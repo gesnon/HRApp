@@ -63,6 +63,7 @@ namespace HRApp
             };
              await _employeeService.Create(dto);
 
+            //Обновление таблицы с работниками, здесь происходит обращение к элементу из другой формы
             List<EmployeeGetDTO> employees = await _employeeService.GetByName("");
             var form = (Form1)System.Windows.Forms.Application.OpenForms["Form1"];
             var grid = (DataGridView)form.Controls.Find("dataGridView1", true)[0];

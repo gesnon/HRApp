@@ -12,5 +12,10 @@ namespace HRApp.Application.Models.Posts
         public string Name { get; set; }
         public string UserModified { get; set; }
         public DateTime DateModified { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

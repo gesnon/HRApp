@@ -52,19 +52,28 @@ namespace HRApp
                 int id = (int)row.Cells["Id"].Value;
                  await _employeeService.Delete(id);
             }
+            //Обновление таблицы с работниками
 
             List<EmployeeGetDTO> employees = await _employeeService.GetByName(textBox1.Text);
             dataGridView1.DataSource = employees;
         }
 
-        private void fillDB_Click(object sender, EventArgs e)
+        private async void fillDB_Click(object sender, EventArgs e)
         {
-            _dataService.FillData();
+             await _dataService.FillData();
+
+            //Обновление таблицы с работниками
+            List<EmployeeGetDTO> employees = await _employeeService.GetByName("");
+            dataGridView1.DataSource = employees;
         }
 
-        private void ClearDB_Click(object sender, EventArgs e)
+        private async void ClearDB_Click(object sender, EventArgs e)
         {
-            _dataService.RemoveAllData();
+            await _dataService.RemoveAllData();
+
+            //Обновление таблицы с работниками
+            List<EmployeeGetDTO> employees = await _employeeService.GetByName("");
+            dataGridView1.DataSource = employees;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -74,6 +83,7 @@ namespace HRApp
 
         private async void Form1_Load(object sender, EventArgs e)
         {
+            //Первыоначальная загрузка таблицы
             List<EmployeeGetDTO> employees = await _employeeService.GetByName(textBox1.Text);
 
             dataGridView1.DataSource = employees;           
@@ -83,6 +93,7 @@ namespace HRApp
         private async void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+            //Обновление таблицы с работниками
             List<EmployeeGetDTO> employees = await _employeeService.GetByName(textBox1.Text);
 
             dataGridView1.DataSource = employees;

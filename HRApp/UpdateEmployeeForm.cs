@@ -35,6 +35,7 @@ namespace HRApp
 
         private async void UpdateEmployeeForm_Load(object sender, EventArgs e)
         {
+            //Здесь происходит обращение к элементу из другой формы
             var form = (Form1)System.Windows.Forms.Application.OpenForms["Form1"];
             var grid = (DataGridView)form.Controls.Find("dataGridView1", true)[0];
 
@@ -79,6 +80,7 @@ namespace HRApp
 
             string query;
 
+            //Обновление таблицы с работниками, здесь происходит обращение к элементу из другой формы
             List<EmployeeGetDTO> employees = await _employeeService.GetByName("");
             var form = (Form1)System.Windows.Forms.Application.OpenForms["Form1"];
             var grid = (DataGridView)form.Controls.Find("dataGridView1", true)[0];
